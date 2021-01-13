@@ -1,6 +1,6 @@
 ## Hivecell Federated Learning
 
-PyGrid ARM64 build for Hivecell, Jetson TX2.
+PyGrid ARM64 build for Hivecell One, based on Jetson TX2.
 
 Software: Python 3.7, PySyft 0.2.9, Pytorch 1.4.0
 
