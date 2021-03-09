@@ -3,7 +3,7 @@ FROM hivecell/pysyft:latest
 ENV WORKSPACE /workspace
 
 # Setup workspace environment
-RUN pip install --no-cache-dir  notebook==6.1.0 jupyter jupyterlab
+RUN pip install --no-cache-dir  notebook==6.1.0 jupyter jupyterlab pyjwt==1.7.1
 
 # Create jupyter notebook workspace
 RUN mkdir $WORKSPACE

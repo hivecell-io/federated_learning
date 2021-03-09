@@ -14,7 +14,10 @@ services:
     image: hivecell/pygrid-node:latest 
     build: ./apps/node
     environment:
-      - NODE_ID=Alice
+      - NODE_ID=0
+      - MODEL_NAME=mnist
+      - MODEL_VERSION=1.0.0
+      - SERVER_ADRESS=10.10.0.5:5000
       - ADDRESS=http://alice:5000/
       - PORT=5000
       - NETWORK=http://network:7000
@@ -24,12 +27,17 @@ services:
       - 'network'
     ports:
       - 5000:5000
+    volumes:
+      - ./demo:/app/demo
 
   bob:
     image: hivecell/pygrid-node:latest 
     build: ./apps/node
     environment:
-      - NODE_ID=Bob
+      - NODE_ID=1
+      - MODEL_NAME=mnist
+      - MODEL_VERSION=1.0.0
+      - SERVER_ADRESS=10.10.0.5:5000
       - ADDRESS=http://bob:5001/
       - PORT=5001
       - NETWORK=http://network:7000
@@ -39,12 +47,17 @@ services:
       - 'network'
     ports:
       - 5001:5001
+    volumes:
+      - ./demo:/app/demo
 
   charlie:
     image: hivecell/pygrid-node:latest
     build: ./apps/node
     environment:
-      - NODE_ID=Charlie
+      - NODE_ID=2
+      - MODEL_NAME=mnist
+      - MODEL_VERSION=1.0.0
+      - SERVER_ADRESS=10.10.0.5:5000
       - ADDRESS=http://charlie:5002/
       - PORT=5002
       - NETWORK=http://network:7000
@@ -54,12 +67,17 @@ services:
       - 'network'
     ports:
       - 5002:5002
+    volumes:
+      - ./demo:/app/demo
 
   dan:
     image: hivecell/pygrid-node:latest
     build: ./apps/node
     environment:
-      - NODE_ID=Dan
+      - NODE_ID=3
+      - MODEL_NAME=mnist
+      - MODEL_VERSION=1.0.0
+      - SERVER_ADRESS=10.10.0.5:5000
       - ADDRESS=http://dan:5003/
       - PORT=5003
       - NETWORK=http://network:7000
@@ -69,11 +87,18 @@ services:
       - 'network'
     ports:
       - 5003:5003
+    volumes:
+      - ./demo:/app/demo
 
   jupyter:
     image: hivecell/pysyft:notebook
     build: ./apps/notebook
+    environment:
+      - MODEL_NAME=mnist
+      - MODEL_VERSION=1.0.0
+      - SERVER_ADRESS=10.10.0.5:5000
     ports:
       - 8888:8888
     volumes:
       - ./examples:/workspace/examples
+      - ./demo:/workspace/demo
