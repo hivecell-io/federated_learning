@@ -2,8 +2,8 @@ import os
 import torch
 from torchvision.datasets.mnist import read_image_file, read_label_file
 
-raw_folder = "/workspace/demo/data/MNIST/raw"
-processed_folder = "/workspace/demo/data/MNIST/processed"
+raw_folder = "/app/demo/data/MNIST/raw"
+processed_folder = "/app/demo/data/MNIST/processed"
 training_file = 'training.pt'
 test_file = 'test.pt'
 
